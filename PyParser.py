@@ -113,8 +113,8 @@ help
             elif x == 'e':
                 x = math.e
             elif x == 'help':
-                return self.help
-            if x in self.__variables:
+                return self.__help
+            elif x in self.__variables:
                 return self.__variables.get(x, 0)
             else:
                 #Error breaking, wasn't a function float or parenthese
