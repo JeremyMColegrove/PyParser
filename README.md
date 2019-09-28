@@ -43,6 +43,7 @@ You can set variables before you parse the string, and these variables can be ch
 from PyParser import PyParser
 k = PyParser()
 k.setVariables({'a':5, 'b':10})
+k.eval("a*b")
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
 
