@@ -195,4 +195,4 @@ help
         self.variables = dict(self.variables, **l)
         return True
     def clearVariables(self):
-        self.variables=dict()
+        self.variables.clear()
