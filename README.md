@@ -1,31 +1,31 @@
-# PythonParser
+# PyParser
 **Python parser with support for variables
 This program parses expressions given in string format and returns with a float
 Complete list of supported expressions:**
 
-- \+ (Addition)
-- \- (Subtraction)
-- \* (Multiplication)
-- \/ (Division)
-- \^ (Power)
-- \% (Modulus)
-- \> (Greater Than)
-- \< (Less Than)
-- \= (Equal Too)
-- sin (SIN Function in Radians)
-- cos (COS Function in Radians)
-- tan (TAN Function in Radians)
-- sind (SIN Function in Degrees)
-- cosd (COS Function in Degrees)
-- tand (TAN Function in Degrees)
+- \+    (Addition)
+- \-    (Subtraction)
+- \*    (Multiplication)
+- \/    (Division)
+- \^    (Power)
+- \%    (Modulus)
+- \>    (Greater Than)
+- \<    (Less Than)
+- \=    (Equal Too)
+- sin   (SIN Function in Radians)
+- cos   (COS Function in Radians)
+- tan   (TAN Function in Radians)
+- sind  (SIN Function in Degrees)
+- cosd  (COS Function in Degrees)
+- tand  (TAN Function in Degrees)
 - floor (Floor)
-- ceil (Ceil)
-- fact (Factorial)
+- ceil  (Ceil)
+- fact  (Factorial)
 - round (Rounding)
-- pi (Constant for PI)
-- e (Constant for e)
+- pi    (Constant for PI)
+- e     (Constant for e)
 - clear (Clears all Variables)
-- help (Displays All Available Expressions)
+- help  (Displays All Available Expressions)
 
 # VARIABLES
 
