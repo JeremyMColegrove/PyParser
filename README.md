@@ -32,16 +32,16 @@ Complete list of supported expressions:**
 ## STATIC
 You can set variables directly in the string you want parsed. i.e
 ```
-from PyParser import eval
-eval().parse("a=5")
+from PyParser import PyParser
+PyParser().eval("a=5")
 ```
 This sets the letter **a** to **5**, and can not be changed.
 
 ## DYNAMIC
 You can set variables before you parse the string, and these variables can be changed. You pass a dictionary to the function setVariables i.e
 ```
-from PyParser import eval
-k = eval()
+from PyParser import PyParser
+k = PyParser()
 k.setVariables({'a':5, 'b':10})
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
