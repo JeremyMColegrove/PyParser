@@ -1,13 +1,7 @@
-#This program parses expressions given in string format
-#Efficiently handles
-#   + - * / ^ %  e pi parentheses, double negatives, error breaking
-#   PEMDAS, spaces, decimals, sqrt() log() ln() ceil() floor() round() sin()
-#   cos() tan()
-#   Equivilancies, Inequallities, variables, multiple expression by ,
+#   This program parses expressions given in string format
 #   Recursive decent parser
 #   1/16/2019
 #   Jeremy Colegrove
-#   CSCI 2001-90
 
 import math
 
