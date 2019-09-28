@@ -1,8 +1,7 @@
 # PythonParser
-## Python parser with variable support
-## This program parses expressions given in string format
-
-## Complete list of supported expressions:
+**Python parser with support for variables
+This program parses expressions given in string format and returns with a float
+Complete list of supported expressions:**
 
 - \+ (Addition)
 - \- (Subtraction)
