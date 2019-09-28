@@ -5,7 +5,7 @@
 
 import math
 
-class eval:
+class PyParser:
     def __init__(self):
         self.pos = 0
         self.ch = ''
@@ -182,7 +182,7 @@ help
                 x = str(x) + ", " + str(self.parseEquals())
             else:
                 return x
-    def parse(self, str_):
+    def eval(self, str_):
         self.pos = 0
         self.string = str_+" "
         self.nextChar()
