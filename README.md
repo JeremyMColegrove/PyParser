@@ -27,7 +27,7 @@ Complete list of supported expressions:**
 - clear (Clears all Variables)
 - help (Displays All Available Expressions)
 
-# VARIABLES:
+# VARIABLES
 
 ## STATIC
 You can set variables directly in the string you want parsed. i.e
@@ -46,7 +46,7 @@ k.setVariables({'a':5, 'b':10})
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
 
-## NOTE:
+## NOTE
 You can dynamically clear variables too by calling **object.clearVariables()**
 
 
