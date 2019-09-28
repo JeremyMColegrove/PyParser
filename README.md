@@ -48,7 +48,7 @@ k.eval("a*b")
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
 
 ## NOTE
-You can dynamically clear variables too by calling **object.clearVariables()**
+You can dynamically clear variables by calling **object.clearVariables()**
 
 
 
