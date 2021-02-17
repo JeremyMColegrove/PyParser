@@ -33,7 +33,7 @@ Complete list of supported expressions:**
 You can set variables directly in the string you want parsed. i.e
 ```
 from PyParser import PyParser
-PyParser().eval("a=5")
+PyParser().parse("a=5")
 ```
 This sets the letter **a** to **5**, and can not be changed.
 
@@ -43,7 +43,7 @@ You can set variables before you parse the string, and these variables can be ch
 from PyParser import PyParser
 k = PyParser()
 k.setVariables({'a':5, 'b':10})
-k.eval("a*b")
+k.parse("a*b")
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
 
