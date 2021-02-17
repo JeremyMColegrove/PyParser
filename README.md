@@ -24,8 +24,6 @@ Complete list of supported expressions:**
 - round (Rounding)
 - pi    (Constant for PI)
 - e     (Constant for e)
-- clear (Clears all Variables)
-- help  (Displays All Available Expressions)
 
 # VARIABLES
 
@@ -38,7 +36,7 @@ PyParser().parse("a=5")
 This sets the letter **a** to **5**, and can not be changed.
 
 ## DYNAMIC
-You can set variables before you parse the string, and these variables can be changed. You pass a dictionary to the function setVariables i.e
+You can set variables before you parse the string, and these variables can be changed.
 ```
 from PyParser import PyParser
 k = PyParser()
@@ -46,9 +44,37 @@ k.setVariables({'a':5, 'b':10})
 k.parse("a*b")
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
+## Compositon of functions
+Support for composition of functions has been added in V2.0
+```
+from PyParser import PyParser
+k = PyParser()
+k.setVariables({'a':5, 'b':'5a+17'})
+func = 'a*b+b'
+print("Composition of function is " + k.getComposition(func))
+print("Value is " + k.parse(func))
+```
+
+## Simultaneous Computations
+You can compute multiple functions at once and return the result as a string seperated by commas.
+
+```
+from PyParser import PyParser
+k = PyParser()
+k.setVariables({'a':5, 'b':'5a+17'})
+func = 'a*b+b, a+b'
+print("Composition of function is " + k.getComposition(func))
+print("Value is " + k.parse(func))
+```
+This will print
+```
+Composition is (5)*(5*(5)+17)+(5*(5)+17), (5)+(5*(5)+17)
+Value is 252.0, 47.0
+```
 
 ## NOTE
 You can dynamically clear variables by calling **object.clearVariables()**
+Multiplication must be explicitly stated using `*`. If you parse 5x the whole term will be ignored
 
 
 
