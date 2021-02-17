@@ -74,7 +74,7 @@ Value is 252.0, 47.0
 
 ## NOTE
 You can dynamically clear variables by calling **object.clearVariables()**
-Multiplication must be explicitly stated using `*`. If you parse 5x the whole term will be ignored
+Multiplication must be explicitly stated using `*`. If you parse 5x the whole term will be ignored and strange results may occur
 
 
 
