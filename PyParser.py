@@ -105,20 +105,15 @@ help
                 x = math.tan(math.radians(self.parseTerm()))
             elif x == 'fact':
                 x = math.factorial(self.parseTerm())
-            elif x == 'clear':
-                    self.__variables.clear()
-                    return "Done"
             elif x == 'pi':
                 x = math.pi
             elif x == 'e':
                 x = math.e
             elif x == 'help':
                 return self.__help
-            elif x in self.__variables:
-                return self.__variables.get(x, 0)
             else:
                 #Error breaking, wasn't a function float or parenthese
-                return x + "\ntype 'help' for list of functions"
+                return "NaN"
         return float(x)
     #Runs parsing methods in reverse so when they collapse it follows PEMDAS
     def parsePower(self):
@@ -127,7 +122,7 @@ help
             if self.eat('^'):
                 x = math.pow(x, self.parseTerm())
             elif self.eat('%'):
-                x = x // self.parseTerm()
+                x = x % self.parseTerm()
             else:
                 return x
 
@@ -182,7 +177,23 @@ help
                 x = str(x) + ", " + str(self.parseEquals())
             else:
                 return x
+
+    def getComposition(self, str_):
+        done = False
+        old = str_
+        while not done:
+            for key in self.__variables:
+                str_ = str_.replace(key, "("+str(self.__variables.get(key, 0))+")")
+            if (str_==old):
+                done = True
+            old=str_
+        return str_
+
     def parse(self, str_):
+
+        #Will compose the function with all variables and functions
+        str_=self.getComposition(str_)
+
         self.__pos = 0
         self.__string = str_+" "
         self.nextChar()
@@ -193,6 +204,5 @@ help
         return x
     def setVariables(self, l):
         self.__variables = dict(self.__variables, **l)
-        return True
     def clearVariables(self):
         self.__variables.clear()
