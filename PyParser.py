@@ -170,13 +170,16 @@ help
 
             else:
                 return x
-    def parseProblem(self):
+    def parseProblem(self, etc):
         x = self.parseEquals()
-        while True:
+        parsing = True
+        while parsing:
             if self.eat(','):
-                x = str(x) + ", " + str(self.parseEquals())
+                etc(x)
+                x = self.parseEquals()
             else:
-                return x
+                etc(x)
+                parsing = False
 
     def getComposition(self, str_):
         done = False
@@ -189,8 +192,7 @@ help
             old=str_
         return str_
 
-    def parse(self, str_):
-
+    def parse(self, str_, etc):
         #Will compose the function with all variables and functions
         str_=self.getComposition(str_)
 
@@ -198,10 +200,10 @@ help
         self.__string = str_+" "
         self.nextChar()
         try:
-            x = self.parseProblem()
+            x = self.parseProblem(etc)
         except Exception as e:
             return e
-        return x
+        #return etc(x)
     def setVariables(self, l):
         self.__variables = dict(self.__variables, **l)
     def clearVariables(self):
