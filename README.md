@@ -24,52 +24,55 @@ Complete list of supported expressions:**
 - round (Rounding)
 - pi    (Constant for PI)
 - e     (Constant for e)
-
 # VARIABLES
 
-## STATIC
-You can set variables directly in the string you want parsed. i.e
-```
-from PyParser import PyParser
-PyParser().parse("a=5")
-```
-This sets the letter **a** to **5**, and can not be changed.
 
 ## DYNAMIC
 You can set variables before you parse the string, and these variables can be changed.
 ```
 from PyParser import PyParser
+
+def etc (value):
+  print(value)
+  
 k = PyParser()
 k.setVariables({'a':5, 'b':10})
-k.parse("a*b")
+k.parse("a*b", etc)
 ```
 This sets the variables **a** to **5** and **b** to **10** before the string is parsed.
 ## Compositon of functions
 Support for composition of functions has been added in V2.0
 ```
 from PyParser import PyParser
+def etc (value):
+  print("Value is " + value)
+  
 k = PyParser()
 k.setVariables({'a':5, 'b':'5a+17'})
 func = 'a*b+b'
 print("Composition of function is " + k.getComposition(func))
-print("Value is " + k.parse(func))
+k.parse(func, etc)
 ```
 
 ## Simultaneous Computations
-You can compute multiple functions at once and return the result as a string seperated by commas.
+You can compute multiple functions at once by seperating with commas. The 2nd parameter in the parse function takes a function that gets called with each computed value.
 
 ```
 from PyParser import PyParser
+def etc (value):
+  print("Value is "+value)
+  
 k = PyParser()
 k.setVariables({'a':5, 'b':'5a+17'})
 func = 'a*b+b, a+b'
 print("Composition of function is " + k.getComposition(func))
-print("Value is " + k.parse(func))
+k.parse(func, etc)
 ```
 This will print
 ```
 Composition is (5)*(5*(5)+17)+(5*(5)+17), (5)+(5*(5)+17)
-Value is 252.0, 47.0
+Value is 252.0
+Value is 47.0
 ```
 
 ## NOTE
