@@ -20,7 +20,6 @@ Complete list of supported expressions:**
 - tand  (TAN Function in Degrees)
 - floor (Floor)
 - ceil  (Ceil)
-- fact  (Factorial)
 - round (Rounding)
 - pi    (Constant for PI)
 - e     (Constant for e)
@@ -50,7 +49,6 @@ def etc (value):
 k = PyParser()
 k.setVariables({'a':5, 'b':'5*a+17'})
 func = 'a*b+b'
-print("Composition of function is " + k.getComposition(func))
 k.parse(func, etc)
 ```
 
@@ -65,12 +63,10 @@ def etc (value):
 k = PyParser()
 k.setVariables({'a':5, 'b':'5*a+17'})
 func = 'a*b+b, a+b'
-print("Composition of function is " + k.getComposition(func))
 k.parse(func, etc)
 ```
 This will print
 ```
-Composition is (5)*(5*(5)+17)+(5*(5)+17), (5)+(5*(5)+17)
 Value is 252.0
 Value is 47.0
 ```
