@@ -30,7 +30,6 @@ cosd
 tand
 floor
 ceil
-fact
 round
 pi
 e
@@ -167,12 +166,14 @@ help
                     return "True"
                 else:
                     return "False"
-
             else:
                 return x
     def parseProblem(self, etc):
-        x = self.parseEquals()
-        etc(x)
+        try:
+            value = self.parseEquals()
+            etc(value)
+        except Exception as error:
+            etc(None)
 
     def getComposition(self, str_):
         done = False
@@ -193,10 +194,8 @@ help
             self.__pos = 0
             self.__string = str_+" "
             self.nextChar()
-            try:
-                x = self.parseProblem(etc)
-            except Exception as e:
-                return e
+            self.parseProblem(etc)
+
     def setVariables(self, l):
         self.__variables = dict(self.__variables, **l)
     def clearVariables(self):

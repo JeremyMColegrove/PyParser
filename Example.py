@@ -1,17 +1,16 @@
 from PyParser import PyParser
 
-
-index = 0
-
 def print_float (value):
   if type(value) == float:
     print(value)
 
-def print_bool (value):
+def print_bool (value):  
   print(value)
 
 
 k = PyParser()
+
+
 
 # looping through and compute numbers
 print("compute looping 0-9:")
