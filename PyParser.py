@@ -7,6 +7,7 @@ import math
 
 class PyParser:
     def __init__(self):
+        self.__seperator = ','
         self.__pos = 0
         self.__ch = ''
         self.__string = ''
@@ -77,8 +78,8 @@ help
             while not self.__ch.isdigit() and (self.__ch.isalpha()):
                 self.nextChar()
             x = self.__string[self.pos_-1:self.__pos-1]
-
             #Define functions here
+
             if x == 'sqrt':
                 x = math.sqrt(self.parseTerm())
             elif x == 'log':
@@ -103,17 +104,16 @@ help
                 x = math.cos(math.radians(self.parseTerm()))
             elif x == 'tand':
                 x = math.tan(math.radians(self.parseTerm()))
-            elif x == 'fact':
-                x = math.factorial(self.parseTerm())
             elif x == 'pi':
                 x = math.pi
             elif x == 'e':
                 x = math.e
             elif x == 'help':
                 return self.__help
+            # x was not an expression, but it could be a variable
             else:
-                #Error breaking, wasn't a function float or parenthese
-                return "NaN"
+                return x
+
         return float(x)
     #Runs parsing methods in reverse so when they collapse it follows PEMDAS
     def parsePower(self):
@@ -151,7 +151,7 @@ help
             if self.eat('='):
                 if not any(char.isdigit() for char in str(x)):
                     self.__variables[x] = self.parseExpression()
-                    return "Variable "+x+" set."
+                    return True
                 else:
                     if x == self.parseExpression():
                         return "True"
@@ -172,14 +172,7 @@ help
                 return x
     def parseProblem(self, etc):
         x = self.parseEquals()
-        parsing = True
-        while parsing:
-            if self.eat(','):
-                etc(x)
-                x = self.parseEquals()
-            else:
-                etc(x)
-                parsing = False
+        etc(x)
 
     def getComposition(self, str_):
         done = False
@@ -194,16 +187,16 @@ help
 
     def parse(self, str_, etc):
         #Will compose the function with all variables and functions
-        str_=self.getComposition(str_)
-
-        self.__pos = 0
-        self.__string = str_+" "
-        self.nextChar()
-        try:
-            x = self.parseProblem(etc)
-        except Exception as e:
-            return e
-        #return etc(x)
+        str_ = str_.replace(" ","").split(self.__seperator)
+        for command in str_:
+            str_=self.getComposition(command)
+            self.__pos = 0
+            self.__string = str_+" "
+            self.nextChar()
+            try:
+                x = self.parseProblem(etc)
+            except Exception as e:
+                return e
     def setVariables(self, l):
         self.__variables = dict(self.__variables, **l)
     def clearVariables(self):
